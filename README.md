@@ -95,3 +95,5 @@ You should now be able to access the web app by visiting http://localhost:8000
 # Warning
 In case the web app is not displaying correctly, you should probably run the collectstatic command to generate the static files (bootstrap, media, etc...), by the following:
 `python manage.py collectstatic`
+
+# [Check out my blog](https://boublog.com)
