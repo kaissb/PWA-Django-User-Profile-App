@@ -1,4 +1,4 @@
-# avito
+# PWA-Django User Profile App
 Simple Django app that manages user profiles
 
 A simple django application with the following requirements:
