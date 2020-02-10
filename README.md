@@ -17,21 +17,23 @@ The application has 2 endpoints: "/", and "/user/<pk>". The first one displays a
 with the ability to edit the contents. This latter is handling cleaning valid data, and serializing it to be compatible with the database used (sqlite in this case).
 
 Here is an example of the first endpoint, the rest is fairly self-explanatory:
+```python
 def profiles(request):
     context = {
         'profiles': Profile.objects.all() # We define a context variable of a list of all Profile objects that we will then pass to the html file.
     }
     return render(request, "app/profiles.html", context) # The context variable is defined as a dictionary, and passed to a render function.
-    
+   ``` 
 We can use special syntax inside our HTML to call functions and variables by using {{}} or {%%} tags. We use {{ example_var }} to use a variable
 which was passed on through the context variable, and we use {%%} for functions and statements like {% if statement %} or {% for loop %}.
 
 To make it easier for us to sanitize data through forms, we use ModelForms:
+```python
 class EditUserForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ["name", "email", "avatar"]
-
+```
 We can use EditUserForm to directly have users submit data through forms in HTML (with the use of the POST method, and a csrf token for protection).
 This way we can skip the hassle of sanitizing data and focus more on the outcome of the function.
 
