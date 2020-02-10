@@ -38,7 +38,36 @@ We can use EditUserForm to directly have users submit data through forms in HTML
 This way we can skip the hassle of sanitizing data and focus more on the outcome of the function.
 
 At last, we used ProgressiveWebApp to make the application ready for offline usage, using service workers, made with JavaScript.
-The offline side of the application still has some few bugs, because this is my first time using PWA in a Django project. I took this opportunity,
-not only to apply for the job, but also to learn a new and very important feature.
+The offline side of the application still has some few bugs, because this is my first time using PWA in a Django project. 
+
+Here is my first attempt after some research online:
+```javascript
+var staticCacheName = "djangopwa-v1";
+
+self.addEventListener("install", function(event) {
+  event.waitUntil(
+    caches.open(staticCacheName).then(function(cache) {
+      return cache.addAll(["/base"]);
+    })
+  );
+});
+
+self.addEventListener("fetch", function(event) {
+  var requestUrl = new URL(event.request.url);
+  if (requestUrl.origin === location.origin) {
+    if (requestUrl.pathname === "/") {
+      event.respondWith(caches.match("/base"));
+      return;
+    }
+  }
+  event.respondWith(
+    caches.match(event.request).then(function(response) {
+      return response || fetch(event.request);
+    })
+  );
+});
+```
+
+I took this opportunity, not only to apply for the job, but also to learn a new and very important feature.
 
 More to come regardless of the outcome of this task.
