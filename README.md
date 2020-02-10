@@ -91,3 +91,7 @@ Or you can use the requirements.txt file in the repo by typing the following:
 Next, go to the root folder, where you find the manage.py file, then run the following command:
 `python manage.py runserver`
 You should now be able to access the web app by visiting http://localhost:8000
+
+# Warning
+In case the web app is not displaying correctly, you should probably run the collectstatic command to generate the static files (bootstrap, media, etc...), by the following:
+`python manage.py collectstatic`
