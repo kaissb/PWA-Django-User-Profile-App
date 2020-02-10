@@ -71,3 +71,23 @@ self.addEventListener("fetch", function(event) {
 I took this opportunity, not only to apply for the job, but also to learn a new and very important feature.
 
 More to come regardless of the outcome of this task.
+
+# Installation
+To run this app, you should have the following requirements, that you can install using pip:
+```
+beautifulsoup4==4.8.2
+Django==2.2.5
+django-bootstrap4==1.0.1
+et-xmlfile==1.0.1
+jdcal==1.4.1
+pytz==2019.3
+soupsieve==1.9.5
+sqlparse==0.3.0
+django-progressive-web-app==0.1.1
+```
+Or you can use the requirements.txt file in the repo by typing the following:
+`pip install -r requirements.txt`
+
+Next, go to the root folder, where you find the manage.py file, then run the following command:
+`python manage.py runserver`
+You should now be able to access the web app by visiting http://localhost:8000
